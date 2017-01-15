@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdarg.h>
 #include <errno.h>
+#include <time.h>
+#include <sys/time.h>
 
 #include "md5.h"
 #include "jutil.h"
@@ -12,18 +14,25 @@
 #define fail(...) avicon_fail(__LINE__,__func__,__FILE__,__VA_ARGS__)
 
 typedef struct {
+    float r;
+    float g;
+    float b;
+}rgb;
+
+typedef struct {
 
     char*   input_string;
     char*   fname;
-    
+
     int     width;
     int     height;
     char*   image;
-    
+
     int     r;
     int     g;
     int     b;
-    
+
+    rgb     background;
 
 }e;
 
