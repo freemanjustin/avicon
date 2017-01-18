@@ -17,7 +17,8 @@ LFLAGS=
 COBJ=	$(CSRC)main.o \
 	$(CSRC)md5.o \
 	$(CSRC)fail.o \
-	$(CSRC)jutil.o
+	$(CSRC)jutil.o \
+	$(CSRC)channelshift.o
 
 OBJ=	$(COBJ) 
 

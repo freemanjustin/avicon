@@ -19,22 +19,53 @@ typedef struct {
     float b;
 }rgb;
 
+typedef struct{
+
+  unsigned char  *data;  // image data
+  int   h;  // height
+  int   w;  // width
+  int   n;  // number of color components
+
+}image;
+
+
 typedef struct {
 
     char*   input_string;
     char*   fname;
 
-    int     width;
-    int     height;
-    char*   image;
+    image   five;
+    image   cs;
 
     int     r;
     int     g;
     int     b;
 
+    int     nBackgrounds;
+    rgb     *background_colors;
     rgb     background;
+
+    // for color channel shifting
+    int iterations;
+
+    // use result image as new source for iterations
+    int recursiveIterations;
+
+    // shift the image vertically true/false
+    int shiftVertically;
+
+    // shift the image horizontally true/false
+    int shiftHorizontally;
+
+    int horizontalShiftAmount;
+    int verticalShiftAmount;
+
+    int haveHs;
+    int haveVs;
 
 }e;
 
 // prototypes
 void avicon_fail( const int, const char*, const char*, const char*, ... );
+void copyChannel(image *in, image *out, int sourceY, int sourceX, int sourceChannel, int targetChannel);
+void copy_image(image *src, image *dest);
